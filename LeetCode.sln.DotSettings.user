@@ -1,0 +1,8 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ae0b9c5d_002D9733_002D487d_002Db492_002D2428e83e168a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TwoSum" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::C81D5579-3316-410E-918B-D4117DDAE1B2::.NETCoreApp,Version=v3.0::LeetCode.Problems.Tests.TwoSumSolutionTests.TwoSum&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::C81D5579-3316-410E-918B-D4117DDAE1B2::.NETCoreApp,Version=v3.0::LeetCode.Problems.Tests.TwoSumSolutionTests.TwoSum([1, 2, 3],5,[1, 2])&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::C81D5579-3316-410E-918B-D4117DDAE1B2::.NETCoreApp,Version=v3.0::LeetCode.Problems.Tests.TwoSumSolutionTests.TwoSum([3, 1, 5],6,[1, 2])&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
