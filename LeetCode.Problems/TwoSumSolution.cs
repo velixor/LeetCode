@@ -12,10 +12,10 @@ namespace LeetCode.Problems
 
             for (var i = 0; i < nums.Length; i++)
             {
-                dict.TryAdd(nums[i], i);
-
                 var complement = target - nums[i];
-                if (dict.TryGetValue(complement, out var index) && index != i) return new[] {i, index};
+                if (dict.TryGetValue(complement, out var index)) return new[] {i, index};
+
+                dict.TryAdd(nums[i], i);
             }
 
             throw new ArgumentException();
