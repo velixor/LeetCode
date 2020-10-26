@@ -4,5 +4,7 @@
     &lt;TestId&gt;NUnit3x::C81D5579-3316-410E-918B-D4117DDAE1B2::.NETCoreApp,Version=v3.0::LeetCode.Problems.Tests.TwoSumSolutionTests.TwoSum&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::C81D5579-3316-410E-918B-D4117DDAE1B2::.NETCoreApp,Version=v3.0::LeetCode.Problems.Tests.TwoSumSolutionTests.TwoSum([1, 2, 3],5,[1, 2])&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::C81D5579-3316-410E-918B-D4117DDAE1B2::.NETCoreApp,Version=v3.0::LeetCode.Problems.Tests.TwoSumSolutionTests.TwoSum([3, 1, 5],6,[1, 2])&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::E9324F7B-3B8E-4E5A-AB1A-C5B08DD46191::.NETCoreApp,Version=v3.1::LeetCode.Challenges.Tests.ChampagneTowerSolutionTests.ChampagneTower(2,1,1,0.5d)&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::E9324F7B-3B8E-4E5A-AB1A-C5B08DD46191::.NETCoreApp,Version=v3.1::LeetCode.Challenges.Tests.ChampagneTowerSolutionTests.ChampagneTower&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
