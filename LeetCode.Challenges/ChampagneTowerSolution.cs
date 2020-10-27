@@ -4,67 +4,38 @@ namespace LeetCode.Challenges
 {
     public class ChampagneTowerSolution
     {
-        private double[,] _fill;
-
+        // https://leetcode.com/explore/challenge/card/october-leetcoding-challenge/562/week-4-october-22nd-october-28th/3508/
         public double ChampagneTower(int poured, int queryRow, int queryGlass)
         {
-            var (width, height) = GetWidthAndHeight(queryRow, queryGlass);
-            var array = new double[height, width];
-            FillFill(width, height);
-            for (int i = 0; i < poured; i++)
+            var (height, width) = GetHeightAndWidth(queryRow, queryGlass);
+            var tower = new double[height, width];
+
+            tower[0, 0] += poured;
+            for (var y = 0; y < height; y++)
             {
-                for (int y = height - 1; y >= 0; y--)
+                for (var x = 0; x < width; x++)
                 {
-                    for (int x = width - 1; x >= 0; x--)
-                    {
-                        array[y, x] += Fill(array, x, y);
-                        if (array[height - 1, width - 1] == 1) return 1;
-                    }
+                    if (tower[y, x] <= 1) continue;
+
+                    var half = (tower[y, x] - 1) / 2;
+                    tower[y, x] = 1;
+
+                    if (y + 1 < height) tower[y + 1, x] += half;
+
+                    if (x + 1 < width) tower[y, x + 1] += half;
+
+                    // ReSharper disable once CompareOfFloatsByEqualityOperator
+                    if (tower[height - 1, width - 1] == 1) return 1;
                 }
             }
 
-            return array[height - 1, width - 1];
+            var answer = tower[height - 1, width - 1];
+            return Math.Min(answer, 1);
         }
 
-        private void FillFill(int width, int height)
+        private (int, int) GetHeightAndWidth(in int queryRow, in int queryGlass)
         {
-            var helper = new double[height, width];
-            for (int y = 0; y < height; y++)
-            {
-                for (int x = 0; x < width; x++)
-                {
-                    if (x == 0 && y == 0) helper[y, x] = 1;
-                    if (x > 0) helper[y, x] += helper[y, x - 1];
-                    if (y > 0) helper[y, x] += helper[y - 1, x];
-                }
-            }
-
-            _fill = new double[height, width];
-            for (int y = 0; y < height; y++)
-            {
-                for (int x = 0; x < width; x++)
-                {
-                    var pow = Math.Pow(2, y + x + 1);
-                    _fill[y, x] = helper[y, x] / pow;
-                }
-            }
-        }
-
-        // ReSharper disable CompareOfFloatsByEqualityOperator
-        private double Fill(double[,] array, in int x, in int y)
-        {
-            if (x == 0 && y == 0) return 1;
-
-            var fill = 0.0;
-            if (x != 0 && array[y, x - 1] == 1) fill += _fill[y, x - 1];
-            if (y != 0 && array[y - 1, x] == 1) fill += _fill[y - 1, x];
-
-            return fill;
-        }
-
-        private (int, int) GetWidthAndHeight(in int queryRow, in int queryGlass)
-        {
-            return (queryGlass + 1, queryRow - queryGlass + 1);
+            return (queryRow - queryGlass + 1, queryGlass + 1);
         }
     }
 }
