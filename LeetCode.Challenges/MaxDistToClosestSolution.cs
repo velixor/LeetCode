@@ -7,29 +7,29 @@ namespace LeetCode.Challenges
         // https://leetcode.com/explore/challenge/card/october-leetcoding-challenge/563/week-5-october-29th-october-31st/3512/
         public int MaxDistToClosest(int[] seats)
         {
-            var left = -1;
-            var right = 0;
-            var maxDist = 0;
+            int maxDist = 0, emptySeat = 0;
 
-            while (right < seats.Length)
+            for (var i = 0; i < seats.Length; i++)
             {
-                if (seats[right] == 1)
+                if (seats[i] == 0)
                 {
-                    maxDist = left < 0
-                        ? Math.Max(maxDist, CornerCase(left, right))
-                        : Math.Max(maxDist, MiddleCase(left, right));
-                    left = right;
+                    emptySeat++;
                 }
+                else
+                {
+                    if (emptySeat == i)
+                        maxDist = i;
+                    else if ((emptySeat + 1) / 2 > maxDist)
+                        maxDist = (emptySeat + 1) / 2;
 
-                right++;
+                    emptySeat = 0;
+                }
             }
 
-            maxDist = Math.Max(maxDist, CornerCase(left, right));
+            if (emptySeat > maxDist)
+                maxDist = emptySeat;
 
             return maxDist;
         }
-
-        private int CornerCase(int l, int r) => r - l - 1;
-        private int MiddleCase(int l, int r) => (int) Math.Ceiling(CornerCase(l, r) / 2.0);
     }
 }
