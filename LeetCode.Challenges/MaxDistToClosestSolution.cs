@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LeetCode.Challenges
+﻿namespace LeetCode.Challenges
 {
     public class MaxDistToClosestSolution
     {
