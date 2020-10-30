@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 
 namespace LeetCode.Challenges
 {
@@ -7,60 +7,41 @@ namespace LeetCode.Challenges
         public int FindNumberOfLIS(int[] nums)
         {
             var length = nums.Length;
-            var arr = new int[length, length];
+            if (length <= 1) return length;
 
-            for (var y = 0; y < length; y++)
-            {
-                for (var x = 0; x < length; x++)
-                {
-                    if (x < y) arr[y, x] = -1;
-                    else if (x == y) arr[y, x] = 0;
-                    else
-                        arr[y, x] = nums[x] > nums[y]
-                            ? 1
-                            : 0;
-                }
-            }
-
-            var seqs = new List<int>[length];
+            var sequences = new Sequence[length];
             for (var i = 0; i < length; i++)
             {
-                seqs[i] = new List<int>();
+                sequences[i].Count = 1;
             }
 
-            for (var y = length - 1; y >= 0; y--)
+            for (var right = 0; right < length; ++right)
             {
-                seqs[y].Add(1);
-
-                for (int x = 0; x < length; x++)
+                for (var left = 0; left < right; ++left)
                 {
-                    if (arr[y, x] != 1) continue;
-                    foreach (var seq in seqs[x])
+                    if (nums[left] >= nums[right]) continue;
+                    if (sequences[left].Length >= sequences[right].Length)
                     {
-                        seqs[y].Add(seq + 1);
+                        sequences[right].Length = sequences[left].Length + 1;
+                        sequences[right].Count = sequences[left].Count;
+                    }
+                    else if (sequences[left].Length + 1 == sequences[right].Length)
+                    {
+                        sequences[right].Count += sequences[left].Count;
                     }
                 }
             }
 
-            var maxLength = 0;
-            var count = 0;
-            foreach (var seq in seqs)
-            {
-                foreach (var currentLength in seq)
-                {
-                    if (currentLength > maxLength)
-                    {
-                        maxLength = currentLength;
-                        count = 1;
-                    }
-                    else if (currentLength == maxLength)
-                    {
-                        count++;
-                    }
-                }
-            }
+            var longest = sequences.Select(x => x.Length).Max();
+            var ans = sequences.Where(x => x.Length == longest).Sum(x => x.Count);
 
-            return count;
+            return ans;
+        }
+
+        private struct Sequence
+        {
+            public int Length;
+            public int Count;
         }
     }
 }
